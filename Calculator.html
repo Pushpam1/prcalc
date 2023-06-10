@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<!-- saved from url=(0031)http://127.0.0.1:5500/calc.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        .text-center {
+            text-align: center;
+            background-color: antiquewhite;
+        }
+
+        .mx-auto {
+            margin: auto;
+        }
+
+        .flex {
+            display: flex;
+            background-color: rgb(206, 155, 155);
+        }
+
+        .flex-col {
+            flex-direction: column;
+            
+        }
+
+        .button {
+            background-color: rgb(57, 54, 54);
+            color: white;
+            width: 60px;
+            padding: 18px;
+            margin: 0px 3px;
+            border: 3px solid black;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 21px;
+        }
+
+        .items-center {
+            align-items: center;
+        }
+
+        .row {
+            margin: 8px 0px;
+            
+        }
+
+        .row input {
+            font-size: 19px;
+            margin: 0;
+            padding: 14px 11px;
+            border: 3px solid black;
+            border-radius: 8px;
+        }
+        .aim{
+            color: rgb(17, 16, 19);
+            font-size: 17px;
+            font-style: italic;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <h1 class="text-center">Calculator</h1>
+    <div class="container flex flex-col mx-auto items-center">
+        <div class="row">
+            <input type="text" class="input" placeholder="Calculate here">
+        </div>
+        <div class="row">
+
+            <button class="button">AC</button>
+            <button class="button">%</button>
+            <button class="button">00</button>
+            <button class="button">000</button>
+        </div>
+        <div class="row">
+
+            <button class="button">7</button>
+            <button class="button">8</button>
+            <button class="button">9</button>
+            <button class="button">/</button>
+        </div>
+
+        <div class="row">
+
+            <button class="button">4</button>
+            <button class="button">5</button>
+            <button class="button">6</button>
+            <button class="button">*</button>
+        </div>
+
+        <div class="row">
+
+            <button class="button">1</button>
+            <button class="button">2</button>
+            <button class="button">3</button>
+            <button class="button">+</button>
+        </div>
+        <div class="row">
+
+            <button class="button">0</button>
+            <button class="button">.</button>
+            <button class="button">=</button>
+            <button class="button">-</button>
+        </div>
+        <footer class="aim"><p>By K.PUSHPAM<br></p></footer>
+    </div>
+
+
+
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+
+<script>
+    let string = " ";
+    let buttons = document.querySelectorAll('.button');
+    Array.from(buttons).forEach(button => {
+        button.addEventListener("click", (e) => {
+            if(e.target.innerHTML =='='){
+                string=eval(string);
+                document.querySelector('input').value = string;
+            }
+            else if(e.target.innerHTML == 'AC'){
+                string=" "
+                document.querySelector('input').value = string;
+            }
+            else{
+                console.log(e.target);
+            string=string+e.target.innerHTML;
+            document.querySelector('input').value = string;
+            }
+            
+        })
+    });
+</script>
+
+</body></html>
